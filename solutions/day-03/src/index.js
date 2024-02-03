@@ -2,75 +2,102 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import asabenehImage from './images/asabeneh.jpg';
 
-// data
-const userName = 'ASABENEH YETAYEH';
-const userJob = 'Senior Developer';
-const userAddress = 'Finland';
-const userSkill = ['HTML', 'CSS', 'Sass', 'JS', 'React', 'Redux', 'Node', 'MongoDB',
-                    'Python', 'Flask', 'Django', 'Numpy', 'Pandas', 'Data Analysis',
-                    'MYSQL', 'GraphQL', 'D3.js', 'Gatsby', 'Docker', 'Heroku', 'Git'
-                  ]
+// inline styles
+// const headerStyles = {
+//   backgroundColor: '#61DBFB',
+//   fontFamily: 'Helvetica Neue',
+//   padding: 25,
+//   lineHeight: 1.5,
+// }
+// const mainStyles = {
+//   backgroundColor: '#F3F0F5',
+// }
+// const footerStyles = {
+//   backgroundColor: '#61DBFB',
+// }
 
-// components
-const userImage = (
-  <div className='user-image-style'>
+// element
+// header
+const welcome = 'Welcome to 30 Days Of React'
+const title = 'Getting Started React'
+const subtitle = 'JavaScript Library'
+const author = {
+  firstName: 'Asabeneh',
+  lastName: 'Yetayeh',
+}
+const date = 'Oct 2, 2020'
+const header = (
+  <header>
+    <div className='header-wrapper'>
+      <h1>{welcome}</h1>
+      <h2>{title}</h2>
+      <h3>J{subtitle}</h3>
+      <p>
+        Instructor: {author.firstName} {author.lastName}
+      </p>
+      <small>Date: {date}</small>
+    </div>
+  </header>
+)
+const numOne = 3
+const numTwo = 2
+
+const result = (
+  <p>
+    {numOne} + {numTwo} = {numOne + numTwo}
+  </p>
+)
+// main
+const yearBorn = 1820
+const currentYear = new Date().getFullYear()
+const age = currentYear - yearBorn
+const personAge = (
+  <p>
+    {' '}
+    {author.firstName} {author.lastName} is {age} years old
+  </p>
+)
+const techs = ['HTML', 'CSS', 'JavaScript']
+const techsFormatted = techs.map((tech) => <li>{tech}</li>)
+const user = (
+  <div>
     <img src={asabenehImage} alt='asabeneh' />
   </div>
 )
-const Title = ({text}) => {
-  return(
-    <div className='title-style'>
-      <h5>{text}</h5>
-    </div>
-  )
-}
-const Subtitle = ({job, address}) => {
-  return(
-    <div className='subtitle-style'>
+const main = (
+  <main>
+    <div className='main-wrapper'>
       <p>
-        {job} {address}
+        Prerequisite to get started{' '}
+        <strong>
+          <em>react.js</em>
+        </strong>
+        :
       </p>
+      <ul>{techsFormatted}</ul>
+      {result}
+      {personAge}
+      {user}
     </div>
-  )
-}
-const userProfile = (
-  <div className='user-profile'>
-    {userImage}
-    <Title text={userName} />
-    <Subtitle job={userJob} address={userAddress} />
-  </div>
+  </main>
 )
-const Button = ({text}) => {
-  return(
-    <button className='button-style'>{text}</button>
-  )
-}
-const Skill = (
-  <>
-    <Title text='SKILL' />
-    <div className='button-wrapper'>
-      {userSkill.map((skill, index) => (
-        <Button key={index} text={skill} />
-      ))}
+// footer
+const copyRight = 'Copyright 2020'
+const footer = (
+  <footer>
+    <div className='footer-wrapper'>
+      <p>{copyRight}</p>
     </div>
-  </>
-)
-const Footer = (
-  <footer className='footer-wrapper'>
-    <p>
-      <i className="far fa-clock"></i> Joined on Aug 30, 2020
-    </p>
   </footer>
 )
-
-// app
 const app = (
   <div className='app'>
-    {userProfile}
-    {Skill}
-    {Footer}
+    {header}
+    {main}
+    {footer}
   </div>
 )
+
 
 const rootElement = ReactDOM.createRoot(document.getElementById('root'))
 
